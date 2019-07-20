@@ -22,7 +22,15 @@
 {!! Form::close() !!}
 */
 ?>
-<form accept="{{ route('livros.salvar') }}" enctype="mutipart/form-data">
+@if($errors->any())
+	<ul style="color:red;">
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+	</ul>
+@endif
+<form action="{{ route('livros.salvar') }}" enctype="mutipart/form-data" method="POST">
+	{{ csrf_field() }}
 	<div class="form-group row col-lg-12">
 		<div class="col-lg-8">
 			<label>Título</label>
@@ -38,7 +46,7 @@
 		</div>
 		<div class="col-lg-4">
 			<label>Data da Aquisição</label>
-			<input type="text" name="dats_aquisicao" class="form-control" placeholder="Data da Aquisição">
+			<input type="date" name="dats_aquisicao" class="form-control" placeholder="Data da Aquisição">
 		</div>
 		<div class="col-lg-8">
 			<label>Loja</label>
@@ -55,6 +63,9 @@
 		<div class="col-lg-12">
 			<label>Sinopse</label>
 			<textarea name="desc_sinopse" class="form-control" rows="5" style="resize:none;"></textarea>
+		</div>
+		<div class="col-lg-12">
+			<button>Enviar</button>	
 		</div>
 	</div>
 </form>

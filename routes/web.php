@@ -19,6 +19,6 @@ Route::get('/cadastro', function(){
 	return view('form');
 })->name('livros.cadastrar');
 
-Route::post('salvar', function(){
-	echo 'salvar';
+Route::post('salvar', function(App\Http\Requests\CreateLivroRequest $request){
+	echo 'Ir para o controller';
 })->name('livros.salvar');
