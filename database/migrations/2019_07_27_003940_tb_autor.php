@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class TbAutor extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        /*
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        /*Schema::create('tb_autor', function(Blueprint $table){
+            $table->increments('cod_autor');
+            $table->string('desc_nome', 70);
         });*/
+
+        Schema::table('tb_autor', function(Blueprint $table){
+            $table->increments('cod_autor')->unsigned()->change();
+        });
     }
 
     /**
@@ -28,6 +30,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('password_resets');
+        Schema::drop('tb_autor');
     }
 }
