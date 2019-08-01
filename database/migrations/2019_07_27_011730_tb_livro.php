@@ -29,7 +29,7 @@ class TbLivro extends Migration
             $table->string('desc_editora', 40);
             $table->integer('num_edicao')->nullable();
         });
-*/
+
         Schema::table('tb_livro', function(Blueprint $table){
             $table->integer('cod_autor')->unsigned()->change();
             $table->foreign('cod_autor')->references('cod_autor')->on('tb_autor');
