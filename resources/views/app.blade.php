@@ -9,6 +9,8 @@
 		<div class="container">
 			@include('inc.navbar')
 
+			@include('inc.messages')
+
 			<div class="row">
 				<div class="col-lg-9">
 					@yield('content')

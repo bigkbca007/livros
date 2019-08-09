@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('home');
 })->name('livros.home');
 
-Route::get('/cadastro', function(){
-	return view('form');
-})->name('livros.cadastrar');
+Route::get('/cadastro', 'LivrosController@form')->name('livros.cadastrar');
 
-Route::post('salvar', function(App\Http\Requests\CreateLivroRequest $request){
-	echo 'Ir para o controller';
-})->name('livros.salvar');
+Route::post('salvar', 'LivrosController@salvar')->name('livros.salvar');

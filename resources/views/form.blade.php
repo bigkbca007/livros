@@ -38,7 +38,12 @@
 		</div>
 		<div class="col-lg-4">
 			<label>Autor</label>
-			<input type="text" name="desc_autor" class="form-control" placeholder="Autor">
+			<select name="cod_autor" class="form-control">
+				<option value="0">Selecione</option>
+				@foreach($authors as $author)
+					<option value="{{ $author->cod_autor }}">{{ $author->desc_nome }}</option>
+				@endforeach
+			</select>
 		</div>
 		<div class="col-lg-4">
 			<label>ISBN</label>
