@@ -26,11 +26,10 @@ class CreateLivroRequest extends FormRequest
         $now = (new \DateTime('now', new \DateTimeZone('America/Bahia')))->modify('+1 day')->format('Y-m-d');
         return [
             'desc_titulo' => 'required|max:100',
-            'desc_autor' => 'required|max:40',
-            'desc_isbn' => 'max:30',
-            'dats_aquisicao' => "before:$now",
+            'cod_autor' => 'required',
+            'desc_isbn' => 'required|max:30',
             'desc_loja' => 'max:30',
-            'desc_foto' => 'max:40'
+            'desc_foto' => 'max:40',
         ];
     }
 }

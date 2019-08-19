@@ -8,6 +8,40 @@ use App\Livro;
 
 class LivrosController extends Controller
 {
+
+	public function listar(){
+		$livros = DB::table('tb_livro')
+			->orderBy('desc_titulo')
+			->get();
+
+		
+		foreach($livros as &$livro){
+			if(!is_null($livro->dats_aquisicao)){
+				$dt = new \DateTime($livro->dats_aquisicao, new \DateTimeZone('America/Bahia'));
+				$livro->dats_aquisicao = $dt->format('d/m/Y');
+			}
+
+			// String das dimensões.
+			$livro->dimensoes = '';
+			$dimensoes = [];
+ 			if($livro->dim_altura) {
+ 				$dimensoes[] = $livro->dim_altura.' cm';
+ 			}
+ 			if($livro->dim_largura) {
+ 				$dimensoes[] = $livro->dim_largura.' cm';
+ 			}
+ 			if($livro->dim_espessura) {
+ 				$dimensoes[] = $livro->dim_espessura.' cm';
+ 			}
+ 			$livro->dimensoes = implode(' x ', $dimensoes);
+
+ 			// Peso.
+ 			$livro->num_peso .= $livro->num_peso ? 'Kg' : '';
+		}
+
+		return view('home')->with('livros', $livros);
+	}
+
     public function salvar(Request $request){
 
     	$livro = new Livro();

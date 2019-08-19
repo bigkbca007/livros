@@ -13,10 +13,10 @@ class TbAutor extends Migration
      */
     public function up()
     {
-        /*Schema::create('tb_autor', function(Blueprint $table){
+        Schema::create('tb_autor', function(Blueprint $table){
             $table->increments('cod_autor');
             $table->string('desc_nome', 70);
-        });*/
+        });
 
         Schema::table('tb_autor', function(Blueprint $table){
             $table->increments('cod_autor')->unsigned()->change();
