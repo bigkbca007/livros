@@ -41,6 +41,10 @@ class Livro extends Model
 
     	// Pegar a foto
 
-    	return $this->save();
+        if($request->input('cod_livro', false)){
+            return $this->update();
+        } else {
+    	    return $this->save();
+        }
     }
 }

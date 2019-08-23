@@ -70,4 +70,26 @@ class LivrosController extends Controller
     		->get();
     }
 
+    public function editar($cod_livro){
+        $livro = DB::table('tb_livro')
+        ->where('cod_livro', $cod_livro)
+        ->get()
+        ->toArray()[0];
+
+        if($livro->sts_capa_dura){
+            $livro->sts_capa_dura = 'checked';
+        }
+
+        if($livro->sts_lido){
+            $livro->sts_lido = 'checked';
+        }
+
+        $authors = $this->getOptionsAutors();
+
+        return view('form')->with([
+            'livro' => $livro,
+            'authors' => $authors,
+        ]);
+    }
+
 }
